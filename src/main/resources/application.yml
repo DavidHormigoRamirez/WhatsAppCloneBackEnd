@@ -1,0 +1,12 @@
+spring:
+    application:
+        name: whatsappclone
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+    datasource:
+        url: jdbc:mysql://${MYSQL_HOST:mysql}:3306/whatsappclone
+        username: springuser
+        password: secret
+        driver-class-name: com.mysql.cj.jdbc.Driver
