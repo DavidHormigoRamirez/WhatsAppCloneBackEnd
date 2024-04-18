@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import com.turing.alan.whatsappclone.message.domain.MessageEntity;
 import com.turing.alan.whatsappclone.message.service.MessageService;

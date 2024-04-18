@@ -55,6 +55,4 @@ public class MessageEntity {
         this.text = text;
     }
 
-
-
 }
