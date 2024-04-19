@@ -4,8 +4,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.turing.alan.whatsappclone.core.UserAlreadyExistsException;
+import com.turing.alan.whatsappclone.core.UserDoesNotExistsException;
 import com.turing.alan.whatsappclone.user.domain.UserEntity;
 import com.turing.alan.whatsappclone.user.domain.UserRepository;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -16,8 +19,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserEntity> getOne(long id) {
-        return userRepository.findById(id);
+    public UserEntity getOne(long id) {
+        
+        UserEntity user = this.userRepository.findById(id).orElseThrow();
+        //UserEntity user =this.userRepository.findById(id).orElseThrow({return new UserDoesNotExistsException()}})
+        return user;
     }
 
     @Override
@@ -26,13 +32,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(UserEntity user) {
-        this.userRepository.save(user);
+    public UserEntity create(UserEntity user) {
+        // Añadir verificación de que el usuario no existe
+        if (userRepository.existsByPhone(user.getPhone())) {
+            throw new UserAlreadyExistsException();
+        }
+        return this.userRepository.save(user);
     }
 
     @Override
     public void deleteAll() {
         this.userRepository.deleteAll();
+    }
+
+    @Override
+    public Iterable<UserEntity> getAll() {
+  
+        return userRepository.findAll();
     }
     
 }

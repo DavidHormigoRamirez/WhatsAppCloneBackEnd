@@ -2,6 +2,8 @@ package com.turing.alan.whatsappclone.user.domain;
 
 import java.util.List;
 
+import com.turing.alan.whatsappclone.message.domain.MessageEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,9 +20,9 @@ public class UserEntity {
     private String phone;
 
     @OneToMany(mappedBy = "sender",targetEntity = com.turing.alan.whatsappclone.message.domain.MessageEntity.class)
-    private List<UserEntity> senderMessages;
+    private List<MessageEntity> senderMessages;
     @OneToMany(mappedBy = "receiver",targetEntity = com.turing.alan.whatsappclone.message.domain.MessageEntity.class)
-    private List<UserEntity> recieverMessage;
+    private List<MessageEntity> recieverMessage;
     protected UserEntity() {}
     public UserEntity(String phone) {
         this.id = 0;

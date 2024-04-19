@@ -1,5 +1,7 @@
 package com.turing.alan.whatsappclone;
 
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,17 +26,19 @@ public class WhatsappcloneApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
+		this.messageService.deleteAll();
 		this.userService.deleteAll();
+
 		UserEntity david = new UserEntity("626121934");
 		UserEntity eva = new UserEntity("616743036");
 		this.userService.create(david);
 		this.userService.create(eva);
 
-		this.messageService.deleteAll();
-		this.messageService.create(new MessageEntity("Hola Eva", david, eva));
-		this.messageService.create(new MessageEntity("Hola David!", eva, david));
-		this.messageService.create(new MessageEntity("Como estas?", eva, david));
-		this.messageService.create(new MessageEntity("Tirando", david, eva));
+		
+		this.messageService.create(new MessageEntity("Hola Eva", Instant.now(),david, eva));
+		this.messageService.create(new MessageEntity("Hola David!", Instant.now(),eva, david));
+		this.messageService.create(new MessageEntity("Como estas?", Instant.now(),eva, david));
+		this.messageService.create(new MessageEntity("Tirando", Instant.now(),david, eva));
 	}
 
 }

@@ -42,5 +42,17 @@ public class MessageServiceImpl implements MessageService {
     public void deleteAll() {
         this.messageRepository.deleteAll();
     }
+
+    @Override
+    public Iterable<MessageEntity> getAllByUsers(long user1Id, long user2Id) {
+        Iterable<MessageEntity> messages1 = messageRepository.findBySenderIdAndReceiverId(user1Id, user2Id);
+        Iterable<MessageEntity> messages2 = messageRepository.findBySenderIdAndReceiverId(user2Id, user1Id);
+
+        List<MessageEntity> messages = new ArrayList<>();
+        messages1.forEach(messages::add);
+        messages2.forEach(messages::add);
+        messages.sort(null);
+        return messages;
+    }
     
 }
