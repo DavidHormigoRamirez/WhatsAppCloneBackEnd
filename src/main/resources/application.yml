@@ -6,7 +6,7 @@ spring:
         hibernate:
             ddl-auto: update
     datasource:
-        url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/whatsappclone
+        url: jdbc:mysql://${MYSQL_HOST:mysql}:3306/whatsappclone
         username: springuser
         password: secret
         driver-class-name: com.mysql.cj.jdbc.Driver

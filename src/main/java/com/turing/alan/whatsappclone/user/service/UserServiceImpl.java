@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.turing.alan.whatsappclone.core.UserAlreadyExistsException;
-import com.turing.alan.whatsappclone.core.UserDoesNotExistsException;
 import com.turing.alan.whatsappclone.user.domain.UserEntity;
 import com.turing.alan.whatsappclone.user.domain.UserRepository;
 

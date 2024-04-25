@@ -25,8 +25,8 @@ public class ChatController {
     public Iterable<MessageEntity> getChats(@RequestParam(name = "user1") long user1,
                                             @RequestParam(name = "user2") long user2)  {
 
-        Iterable<MessageEntity> messages1 = messageService.getAllByUsers(user1, user2);
-        return messages1;
+        //Iterable<MessageEntity> messages1 
+        return messageService.getAllByUsers(user1, user2);
 
     
     }
